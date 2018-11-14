@@ -12,6 +12,11 @@ h1{
     font-family: 'Nanum Brush Script', cursive;
 }
 
+h2{
+    font-family: 'Nanum Brush Script', cursive;
+    font-size: 10px;
+}
+
 p{
     font-family: 'Nanum Brush Script', cursive;
     font-size: 20px;
@@ -124,6 +129,14 @@ button{
 
 #gameField{
     visibility: collapse;
+}
+
+#gamePlayer{
+    float: left;
+}
+
+#aiPlayer{
+    float: right;
 }
 
 #attack{

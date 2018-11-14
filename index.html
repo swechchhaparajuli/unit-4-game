@@ -20,8 +20,28 @@
 <body>
 
     <div class="container" id = "gameField"> 
-        <button type="button" class="btn btn-light" id = "attack">Attack</button>
-        <button type="button" class="btn btn-dark" id = "defend">Counter Attack</button>
+        <div class = "row" id = "gamePlayer">
+                <h1>Your Points</h1>
+                <hr>
+              <div class = "col">
+                <h1 class="display-4" >Health: </h1>
+                <h2 class="display-4" id = "healthDisplay"> </h2>
+              </div>
+              <div class = "col">
+                <h1 class="display-4" >Defense: </h1>
+                <h2 class="display-4" id = "defenseDisplay"></h2>
+              </div>
+              <div class = "col">
+                <h1 class="display-4" >Attack: </h1>
+                <h2 class="display-4" id = "attackDisplay"></h2>
+              </div>
+                <hr>
+               
+        </div>
+       
+      <button type="button" class="btn btn-light" id = "attack">Attack</button>
+      <button type="button" class="btn btn-dark" id = "defend">Counter Attack</button>
+        
     </div>
 
     <div class="container" id = "bookBox"> 

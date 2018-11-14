@@ -9,18 +9,63 @@ var pheonix = false;
 var prince = false;
 var hallows = false;
 
+
 var music = document.getElementById("theme");
 
 var gameAttack;
 var gameDefense;
-var AIbool = false;
-//--> 0 = offense, 1 = defense,
-var attack;
-var defense;
-var win = 5;
+var gameHealth;
 
-var spellName = ["expelliarmus", "protego", "stupefy", "levicorpus"];
+//--> 0 = offense, 1 = defense,
+var attack = 0;
+var defense = 0;
+var health = 0;
+
+
+var charChosen = ["hermione", "ron", "harry"];
 // expelliarmus, protego, stupefy, levicorpus
+
+var hermione = {
+
+
+     setData: function(){
+        attack = 30;
+        defense = 20;
+        health += 10;
+        $('#attackDisplay').text(attack);
+        $('#defenseDisplay').text(attack);
+        $('#healthDisplay').text(attack);
+    }
+};
+
+var ron = {
+
+     setData: function(){
+        attack = 20;
+        defense = 20;
+        health += 20;
+        $('#attackDisplay').text(attack);
+        $('#defenseDisplay').text(attack);
+        $('#healthDisplay').text(attack);
+    }
+    
+    
+};
+
+var harry = {
+
+     setData: function(){
+        attack = 10;
+        defense = 20;
+        health += 30;
+        $('#attackDisplay').text(attack);
+        $('#defenseDisplay').text(attack);
+        $('#healthDisplay').text(attack);
+    }
+};
+
+
+
 
 
 
@@ -32,6 +77,7 @@ $("#book1").on("click", function() {
    $('#charBox').css("visibility","visible");
    gameAttack = 20;
    gameDefense = 10;
+    gameHealth = 10;
    music.play();
    sorcerer = true;
 });
@@ -41,6 +87,7 @@ $("#book2").on("click", function() {
     $('#charBox').css("visibility","visible");
     gameAttack = 30;
    gameDefense = 20;
+   gameHealth = 20;
     music.play();
     chamber = true;
 });
@@ -50,6 +97,7 @@ $("#book3").on("click", function() {
     $('#charBox').css("visibility","visible");
     gameAttack = 40;
     gameDefense = 30;
+    gameHealth = 30;
     music.play();
     azkaban = true;
 });
@@ -59,6 +107,7 @@ $("#book4").on("click", function() {
     $('#charBox').css("visibility","visible");
     gameAttack = 50;
    gameDefense = 60;
+   gameHealth = 40;
     music.play();
     goblet = true;
 });
@@ -68,6 +117,7 @@ $("#book5").on("click", function() {
     $('#charBox').css("visibility","visible");
     gameAttack = 70;
    gameDefense = 80;
+   gameHealth = 50;
     music.play();
     pheonix = true;
 });
@@ -77,6 +127,7 @@ $("#book6").on("click", function() {
     $('#charBox').css("visibility","visible");
     gameAttack = 80;
    gameDefense = 90;
+   gameHealth = 60;
     music.play();
     prince = true;
 });
@@ -86,6 +137,7 @@ $("#book7").on("click", function() {
     $('#charBox').css("visibility","visible");
     gameAttack = 100;
    gameDefense = 100;
+   gameHealth = 60;
     music.play();
     hallows = true;
 });
@@ -97,9 +149,8 @@ $("#hermione").on("click", function() {
     
     $('#charBox').css("visibility","visible");
     $('#bookBox').css("visibility","collapse");
-    $('#attack').css("visibility","visible");
-    $('#defend').css("visibility","visible");
-   setHermioneData();
+    $('#gameField').css("visibility","visible");
+   hermione.setData();
 
 });
 
@@ -107,50 +158,43 @@ $("#potter").on("click", function() {
    
     $('#charBox').css("visibility","visible");
     $('#bookBox').css("visibility","collapse");
-    $('#attack').css("visibility","visible");
-    $('#defend').css("visibility","visible");
+    $('#gameField').css("visibility","visible");
 
-    setHarryData();
+    harry.setData();
 });
 
 $("#ron").on("click", function() {
     
     $('#charBox').css("visibility","visible");
     $('#bookBox').css("visibility","collapse");
-    $('#attack').css("visibility","visible");
-    $('#defend').css("visibility","visible");
-    setRonData();
+    $('#gameField').css("visibility","visible");
+    ron.setData();
 });
 
 // game play button clicks
 
 $("#attack").on("click", function() {
-    if (defense){
-        attack +=5;
-
-    }else{
-        attack -=5;
+    if (attack > gameDefense){
+        attack +=10;
+        gameHealth -=10;
+        $('#attackDisplay').text(attack);
+    }else if (attack < gameAttack){
+        health -=10;
+        $('#healthDisplay').text(health);
     }
+    
 });
 
 $("#defense").on("click", function() {
-
+    if (defense > gameAttack){
+        attack +=10;
+        gameHealth -=5;
+    }else if (defense < gameAttack){
+        attack -=20;
+        gameHealth -=10;
+    }
 });
 
-function setHermioneData(){
-    attack = 30;
-    defense = 10;
-}
-
-function setHarryData(){
-    attack = 10;
-    defense = 30;
-}
-
-function setRonData(){
-    attack = 20;
-    defense = 20;
-}
 
 
 
