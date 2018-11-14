@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Harry Potter RPG</title>
+
+  <!-- This line is money! It points your HTML to the CSS file. -->
+  <!-- Notice the "relative" pathway? It matches a file inside our current directory's "assets" folder. Open it to see our style rules. -->
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Nanum+Brush+Script" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    
+  </head>
+
+  <title>Harry Potter RPG</title>
+
+<body>
+
+    <div class="container" id = "gameField"> 
+        <button type="button" class="btn btn-light" id = "attack">Attack</button>
+        <button type="button" class="btn btn-dark" id = "defend">Counter Attack</button>
+    </div>
+
+    <div class="container" id = "bookBox"> 
+        <div class="jumbotron">
+          <h1 class="display-3">Welcome to the Harry Potter RPG</h1>
+
+          <hr>
+
+          <p class="lead"> Choose a book to begin ... </p>
+           <br>
+            
+            <div class = "row">
+
+              <p class="lead"><button><img src = "assets/images/closed_book.png" id = "book1">Book 1</button></p>
+              <p class="lead"><button><img src = "assets/images/closed_book.png" id = "book2">Book 2</button></p>
+              <p class="lead"><button><img src = "assets/images/closed_book.png" id = "book3">Book 3</button></p>
+              <p class="lead"><button><img src = "assets/images/closed_book.png" id = "book4">Book 4</button></p>
+              <p class="lead"><button><img src = "assets/images/closed_book.png" id = "book5">Book 5</button></p>
+              <p class="lead"><button><img src = "assets/images/closed_book.png" id = "book6">Book 6</button></p>
+              <p class="lead"><button><img src = "assets/images/closed_book.png" id = "book7">Book 7</button></p>
+            
+            </div>
+            
+          </div>
+      </div>
+
+      <div class="container" id = "charBox"> 
+          <div class="jumbotron">
+              <p class="lead"> Who do you want to play as first...? </p>
+              <br>
+
+            <div class = "row">
+              <p class = "lead"><button><img src = "assets/images/hermione.jpg" id = "hermione" >Hermione</button></p>
+              <p class="lead"><button><img src = "assets/images/potter.jpg" id = "potter">Harry</button></p>
+              <p class="lead"><button><img src = "assets/images/ron.jpg" id = "ron">Ron</button></p> 
+            </div>
+          </div>
+        </div>
+
+       
+
+      
+
+
+
+    
+
+     <audio controls autoplay id= "theme">
+        <source src="assets/images/hedwigTheme.mp3" type="audio/mpeg"> Hedwig's Theme
+    </audio>
+
+      
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="assets/javascript/game.js"></script>
+
+
+</body>
