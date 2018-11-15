@@ -9,12 +9,16 @@ var pheonix = false;
 var prince = false;
 var hallows = false;
 
+var hermPlayed = false;
+var ronPlayed = false;
+var harPlayed = false;
+
 
 var music = document.getElementById("theme");
 
-var gameAttack;
-var gameDefense;
-var gameHealth;
+var gameAttack = 0; 
+var gameDefense = 0; 
+var gameHealth = 0;
 
 //--> 0 = offense, 1 = defense,
 var attack = 0;
@@ -22,8 +26,9 @@ var defense = 0;
 var health = 0;
 
 
-var charChosen = ["hermione", "ron", "harry"];
+var charChosen = ["hermione", "ron", "harry"]
 // expelliarmus, protego, stupefy, levicorpus
+var charIndex;
 
 var hermione = {
 
@@ -35,6 +40,9 @@ var hermione = {
         $('#attackDisplay').text(attack);
         $('#defenseDisplay').text(attack);
         $('#healthDisplay').text(attack);
+        charIndex = 0;
+        hermPlayed = true;
+        
     }
 };
 
@@ -47,6 +55,8 @@ var ron = {
         $('#attackDisplay').text(attack);
         $('#defenseDisplay').text(attack);
         $('#healthDisplay').text(attack);
+        charIndex = 1;
+        ronPlayed = true;
     }
     
     
@@ -61,6 +71,8 @@ var harry = {
         $('#attackDisplay').text(attack);
         $('#defenseDisplay').text(attack);
         $('#healthDisplay').text(attack);
+        charIndex = 2;
+        harPlayed = true;
     }
 };
 
@@ -75,9 +87,11 @@ $("#book1").on("click", function() {
   // $('#book1').css("background-image", "url(./assets/images/open_book.png)");
    $('body').css("background-image", "url(./assets/images/sorcerer.jpg)"); 
    $('#charBox').css("visibility","visible");
-   gameAttack = 20;
+  
    gameDefense = 10;
     gameHealth = 10;
+    $('#aiHealth').text(gameHealth);
+    $('#aiAttack').text(gameDefense);
    music.play();
    sorcerer = true;
 });
@@ -85,9 +99,11 @@ $("#book1").on("click", function() {
 $("#book2").on("click", function() {
     $('body').css("background-image", "url(./assets/images/chamber.jpg)"); 
     $('#charBox').css("visibility","visible");
-    gameAttack = 30;
+    
    gameDefense = 20;
    gameHealth = 20;
+   $('#aiHealth').text(gameHealth);
+   $('#aiAttack').text(gameDefense);
     music.play();
     chamber = true;
 });
@@ -95,9 +111,11 @@ $("#book2").on("click", function() {
 $("#book3").on("click", function() {
     $('body').css("background-image", "url(./assets/images/azkaban.jpg)"); 
     $('#charBox').css("visibility","visible");
-    gameAttack = 40;
+ 
     gameDefense = 30;
     gameHealth = 30;
+    $('#aiHealth').text(gameHealth);
+    $('#aiAttack').text(gameDefense);
     music.play();
     azkaban = true;
 });
@@ -105,9 +123,11 @@ $("#book3").on("click", function() {
 $("#book4").on("click", function() {
     $('body').css("background-image", "url(./assets/images/goblet.jpg)"); 
     $('#charBox').css("visibility","visible");
-    gameAttack = 50;
-   gameDefense = 60;
-   gameHealth = 40;
+ 
+    gameDefense = 60;
+    gameHealth = 40;
+    $('#aiHealth').text(gameHealth);
+    $('#aiAttack').text(gameDefense);
     music.play();
     goblet = true;
 });
@@ -115,9 +135,11 @@ $("#book4").on("click", function() {
 $("#book5").on("click", function() {
     $('body').css("background-image", "url(./assets/images/pheonix.jpg)"); 
     $('#charBox').css("visibility","visible");
-    gameAttack = 70;
+  
    gameDefense = 80;
    gameHealth = 50;
+   $('#aiHealth').text(gameHealth);
+   $('#aiAttack').text(gameDefense);
     music.play();
     pheonix = true;
 });
@@ -125,9 +147,11 @@ $("#book5").on("click", function() {
 $("#book6").on("click", function() {
     $('body').css("background-image", "url(./assets/images/prince.jpg)"); 
     $('#charBox').css("visibility","visible");
-    gameAttack = 80;
+  
    gameDefense = 90;
    gameHealth = 60;
+   $('#aiHealth').text(gameHealth);
+   $('#aiAttack').text(gameDefense);
     music.play();
     prince = true;
 });
@@ -135,9 +159,11 @@ $("#book6").on("click", function() {
 $("#book7").on("click", function() {
     $('body').css("background-image", "url(./assets/images/hallows.jpg)"); 
     $('#charBox').css("visibility","visible");
-    gameAttack = 100;
+   
    gameDefense = 100;
    gameHealth = 60;
+   $('#aiHealth').text(gameHealth);
+   $('#aiAttack').text(gameDefense);
     music.play();
     hallows = true;
 });
@@ -174,18 +200,47 @@ $("#ron").on("click", function() {
 // game play button clicks
 
 $("#attack").on("click", function() {
-    if (attack > gameDefense){
-        attack +=10;
-        gameHealth -=10;
-        $('#attackDisplay').text(attack);
-    }else if (attack < gameAttack){
-        health -=10;
-        $('#healthDisplay').text(health);
-    }
-    
+  
+        if (health !=0 || health != NaN){
+            defense +=10;
+            gameHealth = gameHealth - attack;
+            $('#aiHealth').text(gameHealth);
+
+            $('#attackDisplay').text(attack);
+            health = health - gameAttack;
+            $('#healthDisplay').text(health);
+            if (gameHealth < 0 || gameHealth ==0){ // if you have depleted the game health to 0 you win
+                $('#charBox').css("visibility","collapse");
+                $('#bookBox').css("visibility","collapse");
+                $('#gameField').css("visibility","collapse");
+                $('body').css("background-image", "url(./assets/images/win.jpg)"); 
+                $('body').css("background-size", "100%"); 
+              
+            }
+        }else if (hermPlayed && harPlayed && ronPlayed){ // if all the characters have played
+            $('#charBox').css("visibility","collapse");
+            $('#bookBox').css("visibility","collapse");
+            $('#gameField').css("visibility","collapse");
+            $('body').css("background-image", "url(./assets/images/loss.jpg)"); 
+            $('body').css("background-size", "100%"); 
+
+        }else if (health == 0) {
+            if (charIndex = 0 ){
+                charIndex = 1;
+                charChosen[charIndex].setData();    
+            }else if (charIndex = 1){
+                charIndex = 2;
+                charChosen[charIndex].setData(); 
+            }else if (charIndex = 2){
+                charIndex = 0;
+                charChosen[charIndex].setData(); 
+            }
+        }
+         
+ 
 });
 
-$("#defense").on("click", function() {
+/*$("#defense").on("click", function() {
     if (defense > gameAttack){
         attack +=10;
         gameHealth -=5;
@@ -193,7 +248,7 @@ $("#defense").on("click", function() {
         attack -=20;
         gameHealth -=10;
     }
-});
+});*/
 
 
 

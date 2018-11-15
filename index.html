@@ -19,29 +19,58 @@
 
 <body>
 
+
     <div class="container" id = "gameField"> 
-        <div class = "row" id = "gamePlayer">
-                <h1>Your Points</h1>
-                <hr>
-              <div class = "col">
-                <h1 class="display-4" >Health: </h1>
-                <h2 class="display-4" id = "healthDisplay"> </h2>
-              </div>
-              <div class = "col">
-                <h1 class="display-4" >Defense: </h1>
-                <h2 class="display-4" id = "defenseDisplay"></h2>
-              </div>
-              <div class = "col">
-                <h1 class="display-4" >Attack: </h1>
-                <h2 class="display-4" id = "attackDisplay"></h2>
-              </div>
-                <hr>
-               
-        </div>
-       
-      <button type="button" class="btn btn-light" id = "attack">Attack</button>
-      <button type="button" class="btn btn-dark" id = "defend">Counter Attack</button>
+        <div class="jumbotron">
+
+          
+      <!--  <div class = "row" id = "gamePlayer" style="font-size: 20px">
+            <h1>Your Points</h1>
+            <br>-->
         
+
+        <div class = "row" id = "playerAttributes" style="font-size: 20px">
+              <div class = "col col-md-4">
+                <h1 class="display-6" >Health: </h1>
+                <h2 class="display-6" id = "healthDisplay"> </h2>
+              </div>
+              <div class = "col col-md-4">
+                <h1 class="display-6" >Defense: </h1>
+                <h2 class="display-6" id = "defenseDisplay"></h2>
+              </div>
+              <div class = "col col-md-4">
+                <h1 class="display-6" >Attack: </h1>
+                <h2 class="display-6" id = "attackDisplay"></h2>
+              </div>
+                <hr>  
+          </div>
+      
+         <!-- <div class = "row" id = "aiPlayer" style="font-size: 20px">
+              <h1>Opponent Points</h1>
+              <br>-->
+          
+
+        <div class = "row" id = "aiAttributes" style="font-size: 20px">
+              <div class = "col col-md-4">
+                <h1 class="display-6" >Health: </h1>
+                  <h2 class="display-6" id = "aiHealth"> </h2>
+                </div>
+              
+              <div class = "col col-md-4">
+                  <h1 class="display-6" >Attack: </h1>
+                  <h2 class="display-6" id = "aiAttack"></h2>
+              </div>
+        </div>
+      
+     
+      </div>
+              
+      <div class = "row" id = "attackButton">
+        <button type="button" class="btn btn-light" id = "attack">Attack</button>
+     <!-- <button type="button" class="btn btn-dark" id = "defend">Counter Attack</button>-->
+     </div>
+       
+    
     </div>
 
     <div class="container" id = "bookBox"> 
