@@ -16,7 +16,7 @@ var harPlayed = false;
 
 var music = document.getElementById("theme");
 
-var gameAttack = 0; 
+//var gameAttack = 0; 
 var gameDefense = 0; 
 var gameHealth = 0;
 
@@ -124,7 +124,7 @@ $("#book4").on("click", function() {
     $('body').css("background-image", "url(./assets/images/goblet.jpg)"); 
     $('#charBox').css("visibility","visible");
  
-    gameDefense = 60;
+    gameDefense = 40;
     gameHealth = 40;
     $('#aiHealth').text(gameHealth);
     $('#aiAttack').text(gameDefense);
@@ -136,7 +136,7 @@ $("#book5").on("click", function() {
     $('body').css("background-image", "url(./assets/images/pheonix.jpg)"); 
     $('#charBox').css("visibility","visible");
   
-   gameDefense = 80;
+   gameDefense = 50;
    gameHealth = 50;
    $('#aiHealth').text(gameHealth);
    $('#aiAttack').text(gameDefense);
@@ -148,7 +148,7 @@ $("#book6").on("click", function() {
     $('body').css("background-image", "url(./assets/images/prince.jpg)"); 
     $('#charBox').css("visibility","visible");
   
-   gameDefense = 90;
+   gameDefense = 60;
    gameHealth = 60;
    $('#aiHealth').text(gameHealth);
    $('#aiAttack').text(gameDefense);
@@ -160,7 +160,7 @@ $("#book7").on("click", function() {
     $('body').css("background-image", "url(./assets/images/hallows.jpg)"); 
     $('#charBox').css("visibility","visible");
    
-   gameDefense = 100;
+   gameDefense = 70;
    gameHealth = 60;
    $('#aiHealth').text(gameHealth);
    $('#aiAttack').text(gameDefense);
@@ -201,14 +201,15 @@ $("#ron").on("click", function() {
 
 $("#attack").on("click", function() {
   
-        if (health !=0 || health != NaN){
+        if (health > 0){
             defense +=10;
             gameHealth = gameHealth - attack;
             $('#aiHealth').text(gameHealth);
 
             $('#attackDisplay').text(attack);
-            health = health - gameAttack;
+            health = health - gameDefense;
             $('#healthDisplay').text(health);
+            
             if (gameHealth < 0 || gameHealth ==0){ // if you have depleted the game health to 0 you win
                 $('#charBox').css("visibility","collapse");
                 $('#bookBox').css("visibility","collapse");
@@ -217,15 +218,17 @@ $("#attack").on("click", function() {
                 $('body').css("background-size", "100%"); 
               
             }
-        }else if (hermPlayed && harPlayed && ronPlayed){ // if all the characters have played
+       /* }else if (hermPlayed && harPlayed && ronPlayed){ // if all the characters have played
             $('#charBox').css("visibility","collapse");
             $('#bookBox').css("visibility","collapse");
             $('#gameField').css("visibility","collapse");
             $('body').css("background-image", "url(./assets/images/loss.jpg)"); 
             $('body').css("background-size", "100%"); 
-
-        }else if (health == 0) {
-            if (charIndex = 0 ){
+*/
+        }else {
+            $('body').css("background-image", "url(./assets/images/loss.jpg)"); 
+            $('body').css("background-size", "100%"); 
+           /* if (charIndex = 0 ){
                 charIndex = 1;
                 charChosen[charIndex].setData();    
             }else if (charIndex = 1){
@@ -234,7 +237,7 @@ $("#attack").on("click", function() {
             }else if (charIndex = 2){
                 charIndex = 0;
                 charChosen[charIndex].setData(); 
-            }
+            }*/
         }
          
  
