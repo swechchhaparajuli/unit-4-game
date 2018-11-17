@@ -37,9 +37,6 @@ var hermione = {
         attack = 30;
         defense = 20;
         health += 10;
-        $('#attackDisplay').text(attack);
-        $('#defenseDisplay').text(attack);
-        $('#healthDisplay').text(attack);
         charIndex = 0;
         hermPlayed = true;
         
@@ -52,9 +49,6 @@ var ron = {
         attack = 20;
         defense = 20;
         health += 20;
-        $('#attackDisplay').text(attack);
-        $('#defenseDisplay').text(attack);
-        $('#healthDisplay').text(attack);
         charIndex = 1;
         ronPlayed = true;
     }
@@ -68,9 +62,6 @@ var harry = {
         attack = 10;
         defense = 20;
         health += 30;
-        $('#attackDisplay').text(attack);
-        $('#defenseDisplay').text(attack);
-        $('#healthDisplay').text(attack);
         charIndex = 2;
         harPlayed = true;
     }
@@ -177,6 +168,9 @@ $("#hermione").on("click", function() {
     $('#bookBox').css("visibility","collapse");
     $('#gameField').css("visibility","visible");
    hermione.setData();
+   $('#attackDisplay').text(attack);
+   $('#defenseDisplay').text(attack);
+   $('#healthDisplay').text(attack);
 
 });
 
@@ -185,8 +179,10 @@ $("#potter").on("click", function() {
     $('#charBox').css("visibility","visible");
     $('#bookBox').css("visibility","collapse");
     $('#gameField').css("visibility","visible");
-
     harry.setData();
+    $('#attackDisplay').text(attack);
+    $('#defenseDisplay').text(attack);
+    $('#healthDisplay').text(attack);
 });
 
 $("#ron").on("click", function() {
@@ -195,6 +191,9 @@ $("#ron").on("click", function() {
     $('#bookBox').css("visibility","collapse");
     $('#gameField').css("visibility","visible");
     ron.setData();
+    $('#attackDisplay').text(attack);
+    $('#defenseDisplay').text(attack);
+    $('#healthDisplay').text(attack);
 });
 
 // game play button clicks
@@ -218,26 +217,25 @@ $("#attack").on("click", function() {
                 $('body').css("background-size", "100%"); 
               
             }
-       /* }else if (hermPlayed && harPlayed && ronPlayed){ // if all the characters have played
+        }else if (!hermPlayed && !harPlayed && !ronPlayed){ // if all the characters have played
+           
+            if (charIndex = 0 ){
+                console.log("hermPlayed");
+                ron.setData();    
+            }else if (charIndex = 1){
+                console.log("harPlayed");
+                harry.setData(); 
+            }else if (charIndex = 2){
+                console.log("ronPlayed");
+                hermione.setData(); 
+        }
+        }else {
             $('#charBox').css("visibility","collapse");
             $('#bookBox').css("visibility","collapse");
             $('#gameField').css("visibility","collapse");
             $('body').css("background-image", "url(./assets/images/loss.jpg)"); 
             $('body').css("background-size", "100%"); 
-*/
-        }else {
-            $('body').css("background-image", "url(./assets/images/loss.jpg)"); 
-            $('body').css("background-size", "100%"); 
-           /* if (charIndex = 0 ){
-                charIndex = 1;
-                charChosen[charIndex].setData();    
-            }else if (charIndex = 1){
-                charIndex = 2;
-                charChosen[charIndex].setData(); 
-            }else if (charIndex = 2){
-                charIndex = 0;
-                charChosen[charIndex].setData(); 
-            }*/
+           
         }
          
  
