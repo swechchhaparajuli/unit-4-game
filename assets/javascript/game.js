@@ -34,6 +34,8 @@ var hermione = {
 
 
      setData: function(){
+        $("#currentChar").empty();
+        $('#currentChar').append(dynamicChar("hermione"));
         attack = 30;
         defense = 2;
         health += 10;
@@ -51,6 +53,8 @@ var hermione = {
 var ron = {
 
      setData: function(){
+        $("#currentChar").empty();
+        $('#currentChar').append(dynamicChar("ron"));
         attack = 20;
         defense = 2;
         health += 20;
@@ -68,6 +72,8 @@ var ron = {
 var harry = {
 
      setData: function(){
+        $("#currentChar").empty();
+        $('#currentChar').append(dynamicChar("potter"));
         attack = 10;
         defense = 2;
         health += 30;
@@ -182,6 +188,7 @@ $("#hermione").on("click", function() {
     $('#gameField').css("visibility","visible");
    hermione.setData();
    $('#hermione').css("visibility","collapse");
+  // $('#currentChar').append(dynamicChar("hermione"));
    $('#harry').css("visibility","visible");
    $('#ron').css("visibility","visible");
    
@@ -195,6 +202,7 @@ $("#potter").on("click", function() {
     $('#gameField').css("visibility","visible");
     harry.setData();
     $('#potter').css("visibility","collapse");
+   // $('#currentChar').append(dynamicChar("potter"));
     $('#hermione').css("visibility","visible");
    $('#ron').css("visibility","visible");
     $('#attackDisplay').text(attack);
@@ -209,8 +217,9 @@ $("#ron").on("click", function() {
     $('#gameField').css("visibility","visible");
     ron.setData();
     $('#ron').css("visibility","collapse");
+ //   $('#currentChar').append(dynamicChar("ron"));
     $('#hermione').css("visibility","visible");
-   $('#potter').css("visibility","visible");
+    $('#potter').css("visibility","visible");
     $('#attackDisplay').text(attack);
     $('#defenseDisplay').text(attack);
     $('#healthDisplay').text(attack);
@@ -221,16 +230,15 @@ $("#ron").on("click", function() {
 $("#attack").on("click", function() {
   
     $('#healthDisplay').text(health);
-    
+
         if (health > 0){
-            defense +=1;
+            defense +=2; //+1 originally
             gameHealth = gameHealth - (attack+defense);
             $('#aiHealth').text(gameHealth);
 
             $('#attackDisplay').text(attack);
             health = health - gameDefense;
            
-            
             if (gameHealth < 0 || gameHealth ==0){ // if you have depleted the game health to 0 you win
                 $('#charBox').css("visibility","collapse");
                 $('#bookBox').css("visibility","collapse");
@@ -239,7 +247,7 @@ $("#attack").on("click", function() {
                 $('body').css("background-size", "100%"); 
               
             }
-        }else if (!(hermPlayed && harPlayed && ronPlayed)){ // if all the characters have played
+        }else if (!(hermPlayed && harPlayed && ronPlayed)){ // if all the characters not have played
             console.log(charIndex);
             if (charIndex == 0 ){
                // console.log(charIndex);
@@ -251,17 +259,27 @@ $("#attack").on("click", function() {
               //  console.log("ronPlayed");
                 hermione.setData(); 
             }
+
         }else {
             $('#charBox').css("visibility","collapse");
             $('#bookBox').css("visibility","collapse");
             $('#gameField').css("visibility","collapse");
             $('body').css("background-image", "url(./assets/images/loss.jpg)"); 
             $('body').css("background-size", "100%"); 
-           
         }
          
  
 });
+
+function dynamicChar(char){
+    var cChar = $("<img>");
+    cChar.addClass("currentChar");
+   // cChar.text(answers[qCount][i]);
+   cChar.attr("src", "assets/images/" + char + ".jpg");
+   cChar.attr("height", "200px");
+   cChar.attr("width", "200px");
+    $("#currentChar").append(cChar);
+}
 
 /*$("#defense").on("click", function() {
     if (defense > gameAttack){
