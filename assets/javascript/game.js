@@ -35,11 +35,15 @@ var hermione = {
 
      setData: function(){
         attack = 30;
-        defense = 20;
+        defense = 2;
         health += 10;
         charIndex = 0;
        // console.log(charIndex);
         hermPlayed = true;
+        $('#attackDisplay').text(attack);
+        $('#defenseDisplay').text(attack);
+        $('#healthDisplay').text(attack);
+      
         
     }
 };
@@ -48,11 +52,14 @@ var ron = {
 
      setData: function(){
         attack = 20;
-        defense = 20;
+        defense = 2;
         health += 20;
         charIndex = 1;
         //console.log(charIndex);
         ronPlayed = true;
+        $('#attackDisplay').text(attack);
+        $('#defenseDisplay').text(attack);
+        $('#healthDisplay').text(attack);
     }
     
     
@@ -62,11 +69,14 @@ var harry = {
 
      setData: function(){
         attack = 10;
-        defense = 20;
+        defense = 2;
         health += 30;
         charIndex = 2;
         //console.log(charIndex);
         harPlayed = true;
+        $('#attackDisplay').text(attack);
+        $('#defenseDisplay').text(attack);
+        $('#healthDisplay').text(attack);
     }
 };
 
@@ -171,9 +181,10 @@ $("#hermione").on("click", function() {
     $('#bookBox').css("visibility","collapse");
     $('#gameField').css("visibility","visible");
    hermione.setData();
-   $('#attackDisplay').text(attack);
-   $('#defenseDisplay').text(attack);
-   $('#healthDisplay').text(attack);
+   $('#hermione').css("visibility","collapse");
+   $('#harry').css("visibility","visible");
+   $('#ron').css("visibility","visible");
+   
 
 });
 
@@ -183,6 +194,9 @@ $("#potter").on("click", function() {
     $('#bookBox').css("visibility","collapse");
     $('#gameField').css("visibility","visible");
     harry.setData();
+    $('#potter').css("visibility","collapse");
+    $('#hermione').css("visibility","visible");
+   $('#ron').css("visibility","visible");
     $('#attackDisplay').text(attack);
     $('#defenseDisplay').text(attack);
     $('#healthDisplay').text(attack);
@@ -194,6 +208,9 @@ $("#ron").on("click", function() {
     $('#bookBox').css("visibility","collapse");
     $('#gameField').css("visibility","visible");
     ron.setData();
+    $('#ron').css("visibility","collapse");
+    $('#hermione').css("visibility","visible");
+   $('#potter').css("visibility","visible");
     $('#attackDisplay').text(attack);
     $('#defenseDisplay').text(attack);
     $('#healthDisplay').text(attack);
@@ -203,14 +220,16 @@ $("#ron").on("click", function() {
 
 $("#attack").on("click", function() {
   
+    $('#healthDisplay').text(health);
+    
         if (health > 0){
-            defense +=10;
-            gameHealth = gameHealth - attack;
+            defense +=1;
+            gameHealth = gameHealth - (attack+defense);
             $('#aiHealth').text(gameHealth);
 
             $('#attackDisplay').text(attack);
             health = health - gameDefense;
-            $('#healthDisplay').text(health);
+           
             
             if (gameHealth < 0 || gameHealth ==0){ // if you have depleted the game health to 0 you win
                 $('#charBox').css("visibility","collapse");
