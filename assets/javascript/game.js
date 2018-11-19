@@ -191,6 +191,7 @@ $("#hermione").on("click", function() {
   // $('#currentChar').append(dynamicChar("hermione"));
    $('#harry').css("visibility","visible");
    $('#ron').css("visibility","visible");
+   $('#bookBox').remove();
    
 
 });
@@ -205,9 +206,8 @@ $("#potter").on("click", function() {
    // $('#currentChar').append(dynamicChar("potter"));
     $('#hermione').css("visibility","visible");
    $('#ron').css("visibility","visible");
-    $('#attackDisplay').text(attack);
-    $('#defenseDisplay').text(attack);
-    $('#healthDisplay').text(attack);
+   $('#bookBox').remove();
+  
 });
 
 $("#ron").on("click", function() {
@@ -220,9 +220,8 @@ $("#ron").on("click", function() {
  //   $('#currentChar').append(dynamicChar("ron"));
     $('#hermione').css("visibility","visible");
     $('#potter').css("visibility","visible");
-    $('#attackDisplay').text(attack);
-    $('#defenseDisplay').text(attack);
-    $('#healthDisplay').text(attack);
+    $('#bookBox').remove();
+ 
 });
 
 // game play button clicks
@@ -243,6 +242,7 @@ $("#attack").on("click", function() {
                 $('#charBox').css("visibility","collapse");
                 $('#bookBox').css("visibility","collapse");
                 $('#gameField').css("visibility","collapse");
+                $('#charBox').remove();
                 $('body').css("background-image", "url(./assets/images/win.jpg)"); 
                 $('body').css("background-size", "100%"); 
               
@@ -264,6 +264,7 @@ $("#attack").on("click", function() {
             $('#charBox').css("visibility","collapse");
             $('#bookBox').css("visibility","collapse");
             $('#gameField').css("visibility","collapse");
+            $('#charBox').remove();
             $('body').css("background-image", "url(./assets/images/loss.jpg)"); 
             $('body').css("background-size", "100%"); 
         }
